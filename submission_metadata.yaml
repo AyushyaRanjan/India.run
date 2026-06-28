@@ -1,0 +1,98 @@
+# Redrob Hackathon — Submission Metadata
+# Fill in every field marked {FILL_IN} before submitting.
+# This file must match what you enter in the submission portal exactly.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "{FILL_IN}"                  # e.g. "neural-ninjas"
+
+primary_contact:
+  name: "{FILL_IN}"                     # e.g. "Arjun Sharma"
+  email: "{FILL_IN}"                    # e.g. "arjun@email.com"
+  phone: "{FILL_IN}"                    # e.g. "+91-9876543210"
+
+team_members:
+  - name: "{FILL_IN}"
+    email: "{FILL_IN}"
+    role: "{FILL_IN}"                   # e.g. "Team Lead / ML Engineer"
+  # Add more members if needed:
+  # - name: "{FILL_IN}"
+  #   email: "{FILL_IN}"
+  #   role: "{FILL_IN}"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "{FILL_IN}"
+# Format: https://github.com/YOUR_USERNAME/redrob-ranker
+# Must be reachable. Private OK if you grant organiser access at Stage 3.
+
+sandbox_link: "{FILL_IN}"
+# Format: https://YOUR_USERNAME-redrob-ranker.streamlit.app
+# OR:     https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker
+# Must be live and functional before submission.
+
+reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./team_xxx.csv"
+# This single command must produce the submission CSV from candidates.jsonl
+# within 5 minutes on CPU with 16GB RAM and no network access.
+# Pre-computation (precompute.py) is a separate step documented in README.md.
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "{FILL_IN}"                 # e.g. "MacBook Pro M2" or "Dell XPS 15 i7"
+  cpu_cores: "{FILL_IN}"               # e.g. 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "{FILL_IN}"                       # e.g. "macOS 14.5" or "Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false         # rank.py is CPU only — do not change
+  has_network_during_ranking: false     # rank.py makes zero network calls — do not change
+  pre_computation_required: true        # precompute.py must be run before rank.py
+  pre_computation_time_minutes: 10      # approximate, may vary by machine
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+# Honest declaration — permitted and not penalised.
+# Contradictions between this and your code or interview are penalised.
+
+ai_tools_used:
+  - "Claude"
+  - "GitHub Copilot"
+
+ai_usage_summary: |
+  Claude (claude.ai) was used for architecture design discussion, scoring
+  formula refinement, and generating initial drafts of each module. GitHub
+  Copilot was used for autocomplete during development. All module code was
+  written, reviewed, tested, and adapted by the team. No candidate data was
+  fed to any external LLM. rank.py makes zero network calls — all scoring
+  uses precomputed artifacts and pure Python/numpy logic.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Two-phase pipeline. Phase 1 (precompute.py, no time limit): streams all
+  100K candidates, extracts four feature scores per candidate (skills match,
+  experience and company background, behavioral availability, location),
+  builds a BM25 index over concatenated career text, runs 7-rule honeypot
+  detection, saves compact artifacts to disk (~230MB total). Phase 2
+  (rank.py, under 5 min): loads artifacts, computes final scores as
+  vectorized numpy operations in under 1 second, generates template-based
+  reasoning using only real profile facts, writes submission CSV. Scoring:
+  final = (0.50 x jd_match + 0.35 x experience + 0.15 x location) x
+  (0.40 + 0.60 x behavioral) x honeypot_penalty. Honeypot detection knocks
+  out candidates with impossible timelines, title-description mismatches,
+  or implausible skill durations. No LLM is called during ranking.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: "{FILL_IN}"     # change to true after local end-to-end test

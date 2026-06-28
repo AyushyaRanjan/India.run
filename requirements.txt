@@ -1,0 +1,16 @@
+# Redrob Hackathon — Python dependencies
+# Install: pip install -r requirements.txt
+# Python 3.10+ required
+#
+# NOTE: rank.py uses ONLY numpy from this list — it has zero network access
+#       and no LLM dependencies. All other packages are for:
+#         precompute.py  → tqdm (progress bars)
+#         BM25 index     → rank-bm25
+#         sandbox demo   → streamlit, pandas, plotly
+
+numpy>=1.26.0
+rank-bm25>=0.2.2
+tqdm>=4.66.0
+streamlit>=1.32.0
+pandas>=2.1.0
+plotly>=5.18.0

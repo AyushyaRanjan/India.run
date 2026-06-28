@@ -1,0 +1,16 @@
+# Large data files — too big for GitHub (465MB)
+data/candidates.jsonl
+
+# Precomputed artifacts — too big for GitHub (~230MB)
+# README explains how to regenerate with precompute.py
+artifacts/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# OS
+.DS_Store
+Thumbs.db
