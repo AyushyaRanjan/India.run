@@ -5,30 +5,32 @@
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "{FILL_IN}"                  # e.g. "neural-ninjas"
+team_name: "Triple A"                 
 
 primary_contact:
-  name: "{FILL_IN}"                     # e.g. "Arjun Sharma"
-  email: "{FILL_IN}"                    # e.g. "arjun@email.com"
-  phone: "{FILL_IN}"                    # e.g. "+91-9876543210"
+  name: "Ayushya Ranjan"                     
+  email: "ayushya933@gmail.com"                    
+  phone: "7678556747"                   
 
 team_members:
-  - name: "{FILL_IN}"
-    email: "{FILL_IN}"
-    role: "{FILL_IN}"                   # e.g. "Team Lead / ML Engineer"
-  # Add more members if needed:
-  # - name: "{FILL_IN}"
-  #   email: "{FILL_IN}"
-  #   role: "{FILL_IN}"
+  - name: "Ayushya Ranjan"
+    email: "ayushya933@gmail.com"
+    role: "Leader"                
+  name: "Kamran Ahmad"
+    email: "kamranahmadk74@gmail.com"
+    role: "ML Enginer"
+    name: "Melvin Joseph"
+    email: "josephmelvin87@gmail.com"
+    role: "Data Analyst"
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
-github_repo: "{FILL_IN}"
+github_repo: "https://github.com/AyushyaRanjan/India.run"
 # Format: https://github.com/YOUR_USERNAME/redrob-ranker
 # Must be reachable. Private OK if you grant organiser access at Stage 3.
 
-sandbox_link: "{FILL_IN}"
+sandbox_link: "https://indiarun-redrob-ranker.streamlit.app/"
 # Format: https://YOUR_USERNAME-redrob-ranker.streamlit.app
 # OR:     https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker
 # Must be live and functional before submission.
@@ -42,11 +44,11 @@ reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./
 # Compute environment
 # ============================================================================
 compute:
-  platform: "{FILL_IN}"                 # e.g. "MacBook Pro M2" or "Dell XPS 15 i7"
-  cpu_cores: "{FILL_IN}"               # e.g. 8
+  platform: "Lenovo LOQ essential-i5-12thgen"                 # e.g. "MacBook Pro M2" or "Dell XPS 15 i7"
+  cpu_cores: "12"               # e.g. 8
   ram_gb: 16
   python_version: "3.11"
-  os: "{FILL_IN}"                       # e.g. "macOS 14.5" or "Ubuntu 22.04 LTS"
+  os: "Ubuntu-22"                       # e.g. "macOS 14.5" or "Ubuntu 22.04 LTS"
   uses_gpu_for_inference: false         # rank.py is CPU only — do not change
   has_network_during_ranking: false     # rank.py makes zero network calls — do not change
   pre_computation_required: true        # precompute.py must be run before rank.py
@@ -60,12 +62,12 @@ compute:
 
 ai_tools_used:
   - "Claude"
-  - "GitHub Copilot"
+  - "Gemini"
 
 ai_usage_summary: |
   Claude (claude.ai) was used for architecture design discussion, scoring
-  formula refinement, and generating initial drafts of each module. GitHub
-  Copilot was used for autocomplete during development. All module code was
+  formula refinement, and generating initial drafts of each module. Gemini
+  was used for during development. All module code was
   written, reviewed, tested, and adapted by the team. No candidate data was
   fed to any external LLM. rank.py makes zero network calls — all scoring
   uses precomputed artifacts and pure Python/numpy logic.
@@ -95,4 +97,4 @@ declarations:
   code_is_original_work: true
   no_collusion: true
   honeypot_check_done: true
-  reproduction_tested: "{FILL_IN}"     # change to true after local end-to-end test
+  reproduction_tested: true    
